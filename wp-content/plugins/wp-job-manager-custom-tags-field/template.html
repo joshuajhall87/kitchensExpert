@@ -1,0 +1,470 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+</head>
+
+<style>
+
+    form.job-manager-form input, textarea, body, label, html, .job-tags{
+        font-family: 'Karla', sans-serif;
+    }
+    .job-tags {
+        font-size: 15px;
+        text-align: left;
+        font-weight: bold;
+        text-transform: capitalize;
+
+    }
+
+    .description_tooltip {
+        font-family: 'Karla', sans-serif;
+        color: rgb(145, 145, 145);
+    }
+
+    .job-tags h3 {
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+    }
+
+    .job-tags-row span {
+        letter-spacing: normal;
+    }
+
+    .job-tags-row + .job-tags-row {
+        margin-top: 7px;
+    }
+
+    .fieldset-job_category .job-manager-term-checklist li {
+        display: inline-block;
+        float: none;
+        width: auto;
+    }
+
+    .fieldset-job_category .selectit input {
+        display: none;
+    }
+
+    .fieldset-job_category .selectit,
+    .job-tags .button-tag-check,
+    .job-tags .button-tag {
+        background: transparent;
+        border-radius: 3px;
+        border: 2px solid #e5e5e5;
+        color: #717a8f;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 28px;
+        min-width: 150px;
+        outline: none;
+        padding: 14px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .cabinet-features {
+        padding-left: 0;
+        padding-right: 30px;
+    }
+
+    .job-tags .button-tag--left {
+        text-align: center;
+    }
+
+    .job-tags .button-tag-check {
+        min-width: 60px;
+    }
+
+    .fieldset-job_category .selectit:hover,
+    .fieldset-job_category .selectit:hover,
+    .job-tags .button-tag-check:hover,
+    .job-tags .button-tag:hover,
+    .job-tags .button-tag-check:focus,
+    .job-tags .button-tag:focus {
+        border-color: #1DA2FF;
+    }
+
+    .fieldset-job_category .selectit.active,
+    .fieldset-job_category .selectit:active,
+    .job-tags .button-tag-check.active,
+    .job-tags .button-tag-check:active,
+    .job-tags .button-tag.active,
+    .job-tags .button-tag:active {
+        background: #1DA2FF;
+        border-color: #1DA2FF;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .job-tags .button-tag-check span,
+    .job-tags .button-tag span {
+        font-size: 14px;
+        line-height: 1;
+        margin-right: 14px;
+        vertical-align: middle;
+    }
+
+    .job-tags .button-tag-check span {
+        margin: 0;
+    }
+
+    .fieldset-job_category .job-manager-term-checklist,
+    .job-tags .button-tag-group {
+        margin: -7px;
+    }
+
+    .fieldset-job_category .job-manager-term-checklist li,
+    .job-tags .button-tag-group .button-tag-check,
+    .job-tags .button-tag-group .button-tag {
+        margin: 7px;
+    }
+
+    .job-tags .button-tag-group-label {
+        color: rgb(51, 51, 51);
+        font-size: 14px;
+        font-weight: normal;
+        height: 60px;
+        line-height: 22px;
+        margin: 7px 0;
+        padding: 14px 0;
+        position: relative;
+    }
+
+    .job-tags .button-tag-group-label span {
+        display: block;
+        margin-top: 14px;
+        position: relative;
+        transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+    }
+
+    @media (min-width: 768px) {
+        .job-tags .button-tag-group-label {
+            float: left;
+            text-align: left;
+            width: 154px;
+            text-transform: capitalize;
+        }
+
+        .job-tags .button-tag-group-label + .button-tag-group {
+            margin-left: 161px;
+        }
+    }
+
+    .fieldset-job_tags input,
+    .fieldset-job_tags label {
+        display: none;
+    }
+
+    .form-titles {
+        text-align: left;
+        font-weight: 900;
+        margin-bottom: 20px;
+        /*color: rgb(72, 72, 72);*/
+        color: black;
+        font-size: 15px;
+        margin-top: 80px;
+    }
+
+input {
+    display:none;
+}
+
+span#content {
+    display:none;
+}
+input#show:checked ~ span#content {
+  display:block;
+}
+
+input#hide:checked ~ span#content {
+    display:none;
+}
+
+</style>
+
+<script>
+    (function ($) {
+        $(document).ready(function () {
+
+            function toggleJobTags(tag) {
+                var $input = $('[name="job_tags"]')
+                var value = $input.val()
+
+                if (value.indexOf(tag) !== -1) {
+                    var pattern = new RegExp(',' + tag + '|' + tag + ',|' + tag, 'gi')
+                    var newValue = value.replace(pattern, '')
+                    $input.val(newValue)
+                } else {
+                    if (value.length) {
+                        $input.val(value + ',' + tag)
+                    } else {
+                        $input.val(tag)
+                    }
+                }
+            }
+
+            $('button[data-tag]').click(function () {
+                var $parent = $(this).parent();
+                var $this = $(this)
+                var tag = $this.data('tag')
+
+                toggleJobTags(tag)
+
+                if (!$this.parent('[data-toggle="buttons"]').length) {
+                    var $current = $parent.find('button[data-tag].active').not($this)
+
+                    if ($current.length) {
+                        $current.removeClass('active')
+                        toggleJobTags($current.data('tag'))
+                    }
+                    $this.toggleClass('active')
+                } else {
+                    $this.toggleClass('active')
+                }
+            })
+
+            $('.fieldset-job_category .selectit').each(function () {
+                var $this = $(this)
+                var $input = $this.find('input')
+
+                if ($input.is(':checked')) {
+                    $this.addClass('active')
+                }
+            })
+
+            $('.fieldset-job_category .selectit').click(function () {
+                var $this = $(this)
+                var $input = $this.find('input')
+
+                if ($input.is(':checked')) {
+                    $this.addClass('active')
+                } else {
+                    $this.removeClass('active')
+                }
+            })
+
+        })
+    })(jQuery)
+
+</script>
+
+<label for="show"><span><div class="retailer-adv-filtering">
+<div class="retailer-left">
+<img src="https://kitchensexpert.co.uk/wp-content/uploads/2017/06/retailer-advanced-filtering.png" alt="retailer-adv-filtering" style="cursor:pointer">
+</div>
+<div class="retailer-right">
+<img src="https://kitchensexpert.co.uk/wp-content/uploads/2017/06/retailer-advanced-filtering-button2.png" alt="retailer-adv-filtering-button" style="cursor:pointer"></div>
+</div>
+</span></label>
+<input type=radio id="show" name="group">
+<span id="content"><div class="job-tags">
+
+    <div class="row">
+
+        <div class="form-titles">Amenities</div>
+        <div class="button-tag-group" data-toggle="buttons">
+            <button class="button-tag button-tag--left" type="button" data-tag="Accepts Credit cards"><i
+                    class="fa fa-credit-card"></i>&nbsp;Credit cards
+            </button>
+            <button class="button-tag button-tag--left" type="button" data-tag="Public Wi-fi"><span
+                    class="fa fa-wifi"></span>&nbsp;Wi-fi
+            </button>
+            <button class="button-tag button-tag--left" type="button" data-tag="Car Parking"><span
+                    class="fa fa-car"></span>&nbsp;Car Parking
+            </button>
+            <button class="button-tag button-tag--left" type="button" data-tag="Wheelchair Accessible"><span
+                    class="fa fa-wheelchair"></span>&nbsp;Accessible
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="form-titles">Cabinet Features</div>
+        <div class="job-tags-row">
+            <h4 class="button-tag-group-label"><span>Cabinet type</span></h4>
+            <div class="button-tag-group">
+                <button class="button-tag" type="button" data-tag="Flatpack Cabinets">Flatpack</button>
+                <button class="button-tag" type="button" data-tag="Rigid Cabinets">Rigid</button>
+            </div>
+        </div>
+
+        <div class="job-tags-row">
+            <h4 class="button-tag-group-label"><span>Cabinet widths</span></h4>
+            <div class="button-tag-group">
+                <button class="button-tag-check" type="button" data-tag="6 Cabinet widths">6</button>
+                <button class="button-tag-check" type="button" data-tag="7 Cabinet widths">7</button>
+                <button class="button-tag-check" type="button" data-tag="8 Cabinet widths">8</button>
+                <button class="button-tag-check" type="button" data-tag="9 Cabinet widths">9</button>
+                <button class="button-tag-check" type="button" data-tag="10 Cabinet widths">10</button>
+                <button class="button-tag-check" type="button" data-tag="11 Cabinet widths">11</button>
+                <button class="button-tag-check" type="button" data-tag="12 Cabinet widths">12</button>
+                <button class="button-tag-check" type="button" data-tag="13 Cabinet widths">13</button>
+                <button class="button-tag-check" type="button" data-tag="14 Cabinet widths">14</button>
+                <button class="button-tag-check" type="button" data-tag="15+ Cabinet widths">15+</button>
+            </div>
+        </div>
+
+        <div class="job-tags-row">
+            <h4 class="button-tag-group-label"><span>Cabinet thickness</span></h4>
+            <div class="button-tag-group">
+                <button class="button-tag-check" type="button" data-tag="15mm cabinets">15mm</button>
+                <button class="button-tag-check" type="button" data-tag="16mm cabinets">16mm</button>
+                <button class="button-tag-check" type="button" data-tag="17mm cabinets">17mm</button>
+                <button class="button-tag-check" type="button" data-tag="18mm cabinets">18mm</button>
+                <button class="button-tag-check" type="button" data-tag="19mm cabinets">19mm</button>
+                <button class="button-tag-check" type="button" data-tag="20mm+ cabinets">20mm+</button>
+            </div>
+        </div>
+
+        <div class="job-tags-row">
+            <h4 class="button-tag-group-label"><span>Bespoke cabinets</span></h4>
+            <div class="button-tag-group">
+                <button class="button-tag-check" type="button" data-tag="Bespoke cabinets"><i
+                        class="fa fa-check"></i></button>
+            </div>
+        </div>
+
+        <div class="job-tags-row">
+            <h4 class="button-tag-group-label"><span>Solid back panels</span></h4>
+            <div class="button-tag-group">
+                <button class="button-tag-check" type="button" data-tag="Solid back cabinets"><i
+                        class="fa fa-check"></i></button>
+            </div>
+        </div>
+
+        <div class="job-tags-row">
+            <h4 class="button-tag-group-label"><span>Soft close drawers</span></h4>
+            <div class="button-tag-group">
+                <button class="button-tag-check" type="button" data-tag="Soft close drawers"><span
+                        class="fa fa-check"></span></button>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 cabinet-features">
+            <div class="form-titles">Cabinet Features</div>
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Made to measure doors</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="made to measure doors"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Painted to order doors</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Painted to order doors"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Curved doors</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Curved doors"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Soft close hinges</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Soft close hinges"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Cabinet fittings pre-fitted</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Cabinet fittings pre-fitted"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="form-titles">Services</div>
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Made in the UK</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Made in the UK"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Installation service</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Installation service"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Offer finance</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Offer finance"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Project managed</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Project managed"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>German kitchens</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="German kitchens"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Free planning</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Free planning"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Free home visit</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Free home visit"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Nationwide</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Nationwide"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+
+            <div class="job-tags-row">
+                <h4 class="button-tag-group-label"><span>Free brochure</span></h4>
+                <div class="button-tag-group">
+                    <button class="button-tag-check" type="button" data-tag="Free brochure"><span
+                            class="fa fa-check"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</span>
+
+
