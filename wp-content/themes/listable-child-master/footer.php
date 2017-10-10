@@ -13,7 +13,7 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="superman" class="site-footer" role="contentinfo">
 		<?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
 			<div id="footer-sidebar" class="footer-widget-area" role="complementary">
 				<?php dynamic_sidebar( 'footer-widget-area' ); ?>
