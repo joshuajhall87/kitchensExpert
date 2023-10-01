@@ -1,2 +1,2 @@
 # kitchensExpert
-Public Repo for stlying of KitchenExpert // Planner
+Public Repo for styling of KitchensExpert // Planner
