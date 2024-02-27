@@ -1,0 +1,36 @@
+/* ==================================================================
+  CSS custom for template
+  Used in <https://kitchensexpert.co.uk>
+================================================================== */
+.planner-offcanvas-menu {
+    top: 75px !important;
+    height: calc(100vh - 124px) !important;
+}
+.planner-hover-image:hover {text-decoration: none} /* Optional (avoid undesired underscore if a is used as wrapper) */
+.planner-hide {display:none}
+/* Do the shift: */
+.planner-hover-image:hover img:first-child{display:none}
+.planner-hover-image:hover img:last-child{display:inline-block}
+.planner-gradient {
+  background-image: url('../img/gradient.png');
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  width: 100px;
+  height: calc(100vh - 287px) !important;
+  left: 400px;
+  top: 80px;
+}
+.planner-body-gradient {
+  background-image: url('../img/gradient.png');
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  width: 100px;
+  height: calc(100vh - 287px) !important;
+  left: 0px;
+  top: 80px;
+}
+
+
+
+I dont know what you mean by question?
+just preset sizes i see gay stuff its on diy kitchens

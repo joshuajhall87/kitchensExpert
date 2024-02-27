@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KitchensExpert - Planner: Boilerplate</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/planner.css">
+  <!--<script src="./js/planner.js"></script>-->
 </head>
-
 <body>
   <!--Site-navigation-->
-  <header class="p-3 border-bottom">
+  <header class="p-3 border-bottom bg-white planner-header">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -20,14 +20,13 @@
             <use xlink:href="#bootstrap"></use>
           </svg>
         </a>
-
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><img class="me-3" src="img/logo-flat.svg" width="76px" alt="logo"></li>
           <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Plans</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis text-success fw-bold">Saved <i
                 class="bi bi-dot text-success"></i></a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Message</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#room-features-doors-&-windows">Message</a></li>
         </ul>
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
@@ -47,300 +46,340 @@
       </div>
     </div>
   </header>
-  <!--Site-navigation-->
-  <!--planner-navigation-->
-  <header class="d-flex justify-content-between px-2 py-2 border-bottom">
-        <!--hidden-->
-        <div class="right text-white">a</div>
-        <!--hidden-->
-    
-    <!-- <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#room-setup-off-canvas"
-      aria-controls="room-setup-off-canvas">
-      <i class="bi bi-list"></i>
-    </button> -->
-    
-    <ul class="nav nav-pills">
-      <li class="nav-item"><a href="index.html" class="nav-link active">Room setup</a></li>
-      <li class="nav-item"><a href="plan.html" class="nav-link">Plan</a></li>
-      <li class="nav-item"><a href="configure.html" class="nav-link">Configure</a></li>
-      <li class="nav-item"><a href="3D-view.html" class="nav-link">3D view</a></li>
-      <li class="nav-item"><a href="product-list.html" class="nav-link">Product list</a></li>
-      <li class="nav-item"><a href="export.html" class="nav-link">Export</a></li>
-
-    </ul>
-    <!--hidden-->
-    <div class="right text-white">a</div>
-    <!--hidden-->
-
-  </header>
-  <header>
-    <nav class="bg-body-tertiary border-bottom">
-      <div class="d-flex justify-content-center py-1">
-        <span class="btn btn-link text-muted text-decoration-none" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#room-setup-off-canvas" aria-controls="Label"><i class="bi bi-bounding-box me-1"></i>New
-          room</span>
-        <span class="btn btn-link text-muted text-decoration-none" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#room-setup-detail-off-canvas" aria-controls="Label"><i class="bi bi-gear me-1"></i>Room
-          features</span>
-      </div>
-    </nav>
-
-
-  </header>
-
-  <!--off-canvas-menu-->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="room-setup-off-canvas"
-    aria-labelledby="room-setup-off-canvasLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Room setup</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <ul class="list-group">
-        <li class="list-group-item active">Simple room shapes</li>
-        <li class="list-group-item">
-          <div class="container my-3">
-            <div class="row p-0 m-0">
-              <div class="col-4 p-0 m-0 border opacity-25" style="border-top-left-radius: 5px;">
-                <img src="img/1.svg" class="img-fluid" alt="Image 1">
-              </div>
-              <div class="col-4 p-0 m-0 border opacity-25">
-                <img src="img/2.svg" class="img-fluid" alt="Image 2">
-              </div>
-              <div class="col-4 p-0 m-0 border opacity-25" style="border-top-right-radius: 5px;">
-                <img src="img/3.svg" class="img-fluid" alt="Image 3">
-              </div>
-              <div class="col-3 p-0 m-0 border opacity-25" style="border-bottom-left-radius: 5px;">
-                <img src="img/4.svg" class="img-fluid" alt="Image 1">
-              </div>
-              <div class="col-3 p-0 m-0 border opacity-25">
-                <img src="img/5.svg" class="img-fluid" alt="Image 2">
-              </div>
-              <div class="col-3 p-0 m-0 border opacity-25">
-                <img src="img/6.svg" class="img-fluid" alt="Image 3">
-              </div>
-              <div class="col-3 p-0 m-0 border opacity-25" style="border-bottom-right-radius: 5px;">
-                <img src="img/7.svg" class="img-fluid" alt="Image 3">
-              </div>
-            </div>
-
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="d-flex justify-content-between">
-            <span>Draw room shape</span>
-            <i class="bi bi-bounding-box"></i>
-
-          </div>
-        </li>
-      </ul>
-
-      <ul class="list-group mt-3">
-        <li class="list-group-item active">Room height</li>
-        <li class="list-group-item">
-          <p>Ceiling height</p>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="2400mm" aria-label="ceiling height">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#ceilingheight" class="input-group-text"> <i
-                class="bi bi-pencil"></i></a>
-          </div>
-          <p>Cabinet height combination</p>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Standard" aria-label="standard">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#cabinetheightcombination" class="input-group-text"> <i
-                class="bi bi-pencil"></i></a>
-          </div>
-        </li>
-
-      </ul>
-      <button class="btn btn-dark w-100 mt-3" type="button" data-bs-toggle="offcanvas"
-      data-bs-target="#room-setup-detail-off-canvas" aria-controls="room-setup-detail-off-canvas">
-
-      <span class="d-flex justify-content-between active">
-        <span>Room features</span>
-        <i class="bi bi-arrow-right"></i>
-        
-        </span>
-
-
-    </button>
-    </div>
+<body class="bg-light planner-body">
+<div class="container-fluid position-relative">
+  <div class="planner-body-gradient position-absolute">
   </div>
-  <!--off-canvas-menu-->
-
-  <!--off-canvas-room-setup-detail-->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="room-setup-detail-off-canvas"
-    aria-labelledby="room-setup-detail-off-canvasLabel">
+  <a class="planner-hover-image rounded-circle bg-light shadow-lg p-2 mt-3 me-4 position-absolute top-0 end-0" href="#">
+    <img src="img/2d.svg" width="40px" />
+    <img src="img/3d.svg" class="planner-hide" width="40px" />
+  </a>
+<a type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
+  <i class="bi bi-list h2 position-absolute ms-2"></i></a>
+</div>
+<div class="container">
+  <div class="offcanvas offcanvas-start planner-offcanvas-menu" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvas" aria-labelledby="offcanvas" sty>
+    <div class="position-relative">
+      <div class="planner-gradient position-absolute">
+        </div>
+          </div>
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Room features</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <h5 class="offcanvas-title" id="offcanvas">Welcome👋</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <button class="btn btn-dark w-100 mb-3" type="button" data-bs-toggle="offcanvas"
-              data-bs-target="#room-setup-off-canvas" aria-controls="room-setup-off-canvas">
-              <span><i class="bi bi-bounding-box me-1"></i>New room</span>
+      <button class="btn btn-outline-success w-100 mb-3" data-bs-toggle="modal" data-bs-target="#new-room-modal"><i class="bi bi-plus-square-dotted me-2"></i>New room</button>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <span class="badge bg-primary me-2 p-2">Step<span class="ms-1">1</span></span>Room features
             </button>
-
-            <ul class="list-group">
-              <li class="list-group-item active">Room features</li>
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Doors & windows</span>
-                <i class="bi bi-plus-lg"></i>
-              </li>
-      
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Radiators & boilers</span>
-                <i class="bi bi-plus-lg"></i>
-              </li>
-      
-              <li class="list-group-item">
-                <span>Internal walls</span>
-              </li>
-      
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Beams & encasements</span>
-                <i class="bi bi-plus-lg"></i>
-              </li>
-            </ul>
-
-            <ul class="list-group mt-3">
-              <li class="list-group-item active">Room height</li>
-              <li class="list-group-item">
-                <p>Ceiling height</p>
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="2400mm" aria-label="ceiling height">
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#ceilingheight" class="input-group-text"> <i class="bi bi-pencil"></i></a>
-                </div>
-                <p>Cabinet height combination</p>
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Standard" aria-label="standard">
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#cabinetheightcombination" class="input-group-text"> <i class="bi bi-pencil"></i></a>
-                </div>
-              </li>
-            </ul>
-
-            <ul class="list-group mt-3">
-              <li class="list-group-item active">Room area</li>
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Floor area</span>
-                <span>9 (m<sup>2</sup>)</span>
-              </li>
-                               
-            </ul>
-      
-
-
-
-
-
-
-
-            
-    </div>
-  </div>
-  <!--off-canvas-room-setup-detail-->
-
-  <!--ceiling-height-modal -->
-  <div class="modal fade" id="ceilingheight" tabindex="-1" aria-labelledby="ceilingheightLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="ceilingheightLabel">Ceiling height</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>The measurement from the floor to your ceiling.</p>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="2400" aria-label="ceiling height"
-              aria-describedby="ceiling height">
-            <span class="input-group-text" id="basic-addon2">mm</span>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--ceiling-height-modal -->
-
-  <!--cabinet-height-combination-modal -->
-  <div class="modal fade" id="cabinetheightcombination" tabindex="-1" aria-labelledby="cabinetheightcombinationLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="cabinetheightcombinationLabel">Cabinet height combination</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Standard wall cabinets are 720mm in height. <br>To maximise storage you can choose 900mm height wall
-            cabinets, this will affect the distance from the wall cabinet to the ceiling.
-          </p>
-          <div class="container">
-            <div class="row justify-content-between">
-              <div class="col-4">
-                <div class="card" style="width: 18rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="card" style="width: 18rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="card" style="width: 18rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <ul class="list-group">
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#room-features-doors-&-windows"><span><i class="bi bi-door-open me-2"></i>Doors & windows</span><i class="bi bi-chevron-right"></i></a>
+                  <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#room-features-radiators-&-boilers"><span><i class="bi bi-moisture me-2"></i>Radiators & boilers</span><i class="bi bi-chevron-right"></i></a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#room-features-internal-walls"><span><i class="bi bi-bricks me-2"></i>Internal walls</span><i class="bi bi-chevron-right"></i></a>
+                      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#room-features-beams-&-encasements"><span><i class="bi bi-cone-striped me-2"></i>Beams & encasements</span><i class="bi bi-chevron-right"></i></a>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span class="badge bg-primary me-2 p-2">Step<span class="ms-1">2</span></span>Room height
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-action"><i class="bi bi-arrows-vertical me-2"></i>Ceiling height
+                  <div class="input-group my-3">
+                    <input type="text" class="form-control" placeholder="2400mm" aria-label="ceiling height" aria-describedby="ceiling height">
+                    <button class="btn btn-outline-secondary" type="button" id="ceiling height">Change</button>
+                      </div>
+                        </li>
+                  <li class="list-group-item list-group-item-action"><i class="bi bi-columns me-2"></i>Unit height combination
+                    <div class="input-group my-3">
+                      <input type="text" id="disabledTextInput" class="form-control" placeholder="Standard" aria-label="ceiling height" aria-describedby="ceiling height" disabled>
+                      <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#unit-height-combination">Change</button>
+                    </div>
+                  </li>
+              </ul>
+            </div>
+          </div>
         </div>
+        </div>
+        <div class="px-4 py-3 mt-3 bg-white border rounded">
+          <div><span><i class="bi bi-bounding-box-circles me-2"></i>Floor area:</span><span class="ms-2 fw-bold">8</span><span class="small ms-1">(m<sup>2</sup>)</span></div>
+            </div>
+      </div>
+    </div>
+  </div> 
+  <!--room-features-->
+  <!--doors-&-windows-->
+<div class="modal fade" id="room-features-doors-&-windows" tabindex="-1" aria-labelledby="room-features-doors-&-windows" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="room-features-doors-&-windows">Room features</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-0"><span><i class="bi bi-door-open me-2"></i>Doors & windows</span></h6>
+        <hr class="border border-primary border-3 opacity-25">        <div class="ps-2 mt-3">
+<div class="pt-3 px-3 pb-2 m-3 d-flex justify-content-between text-decoration-none text-reset gap-3">
+  <div class="card" style="width: 18rem;">
+    <img src="img/door.jpg" class="card-img-top" alt="standard-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Door</h5>
+      <p class="card-text">A standard internal or external doorway.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/opening.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Open doorway</h5>
+      <p class="card-text">An open doorway through to an adjoining room.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/archway.jpg" class="card-img-top" alt="mixed-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Archway</h5>
+      <p class="card-text">An arched opening leading to an adjoining room.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/window.jpg" class="card-img-top" alt="mixed-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Window</h5>
+      <p class="card-text">A standard window.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/patio.jpg" class="card-img-top" alt="mixed-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Patio/Bi-fold doors</h5>
+      <p class="card-text pb-5">Full height patio or bi-folding doors.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+</div>
+</div>
       </div>
     </div>
   </div>
-  <!--cabinet-height-combination-modal -->
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+<!--radiators-&-boilers-->
+<div class="modal fade" id="room-features-radiators-&-boilers" tabindex="-1" aria-labelledby="room-features-radiators-&-boilers" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="room-features-radiators-&-boilers">Room features</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-0"><span><i class="bi bi-moisture me-2"></i>Radiators & Boilers</span></h6>
+        <hr class="border border-primary border-3 opacity-25"><div class="ps-2 mt-3">
+<div class="pt-3 px-3 pb-2 m-3 d-flex justify-content-between text-decoration-none text-reset gap-3">
+  <div class="card" style="width: 18rem;">
+    <img src="img/radiator.jpg" class="card-img-top" alt="standard-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Radiator</h5>
+      <p class="card-text">Central heating wall attached radiator.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/boiler.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Boiler</h5>
+      <p class="card-text pb-4">A central heating boiler.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--internal-walls-->
+<div class="modal fade" id="room-features-internal-walls" tabindex="-1" aria-labelledby="room-features-internal-walls" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="room-features-internal-walls">Room features</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-0"><span><i class="bi bi-bricks me-2"></i>Internal walls</span></h6>
+        <hr class="border border-primary border-3 opacity-25"><div class="ps-2 mt-3">
+<div class="pt-3 px-3 pb-2 m-3 d-flex justify-content-between text-decoration-none text-reset gap-3">
+  <div class="card" style="width: 18rem;">
+    <img src="img/inwall.jpg" class="card-img-top" alt="standard-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Internal walls</h5>
+      <p class="card-text">Flexible internal wall object to model stud walls, support columns, etc.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/chimney.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Chimney breast</h5>
+      <p class="card-text pb-4">A chimney breast wall structure.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--beams-&-encasements-->
+<div class="modal fade" id="room-features-beams-&-encasements" tabindex="-1" aria-labelledby="room-features-beams-&-encasements" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="room-features-beams-&-encasements">Room features</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-0"><span><i class="bi bi-cone-striped me-2"></i>Beams & encasements</span></h6>
+        <hr class="border border-primary border-3 opacity-25"><div class="ps-2 mt-3">
+<div class="pt-3 px-3 pb-2 m-3 d-flex justify-content-between text-decoration-none text-reset gap-3">
+  <div class="card" style="width: 18rem;">
+    <img src="img/ceiling-beam.jpg" class="card-img-top" alt="standard-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Ceiling beam</h5>
+      <p class="card-text">Automatically spans the room when you attach to a wall.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/ceil-pipe.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Vertical casing</h5>
+      <p class="card-text pb-4">A floor to ceiling encasement, for example to cover piping.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/pipe-box.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Ceiling encasement</h5>
+      <p class="card-text pb-4">A flexible encasement object that extends down from the ceiling.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/floor-pipe.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body position-relative">
+      <h5 class="card-title">Floor encasement</h5>
+      <p class="card-text pb-4">A flexible encasement object that rises up from the floor.</p>
+      <a href="#" class="btn btn-primary position-absolute bottom-0 mb-3">Choose</a>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div><!--New room-->
+<div class="modal fade" id="new-room-modal" tabindex="-1" aria-labelledby="new-room-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="new-room-modal">New room</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="border rounded pt-3 ps-2">
+      <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Simple room shapes</h6>
+      <small class="ms-4">Select your kitchen shape below.</small>
+      <div class="d-flex justify-content-center mt-3">
+      <img class="border-end border-bottom opacity-50" src="img/room-shape-1.svg" width="90px" alt="room-shape-1">
+      <img class="border-bottom opacity-50" src="img/room-shape-2.svg" width="90px" alt="room-shape-2">
+      <img class="border-start border-bottom opacity-50" src="img/room-shape-3.svg" width="90px" alt="room-shape-3">
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+      <img class="border-end border-bottom opacity-50" src="img/room-shape-4.svg" width="90px" alt="room-shape-4">
+      <img class="border-bottom opacity-50" src="img/room-shape-5.svg" width="90px" alt="room-shape-5">
+      <img class="border-start border-bottom opacity-50" src="img/room-shape-6.svg" width="90px" alt="room-shape-6">
+      <img class="border-start border-bottom opacity-50" src="img/room-shape-7.svg" width="90px" alt="room-shape-7">
+      </div>
+      </div>
+        <div class="border rounded pt-3 ps-2 mt-3">
+          <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Complex room shape</h6>
+          <small class="ms-4">Create a detailed outline of your room.</small>
+<a href="#" class="border rounded pt-3 px-3 pb-2 m-3 d-flex justify-content-between text-decoration-none text-reset">
+  <h6><i class="bi bi-pen me-2"></i>Draw room shape</h6>
+  <i class="bi bi-arrows"></i>
+</a>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--unit-height-combination-->
+<div class="modal fade" id="unit-height-combination" tabindex="-1" aria-labelledby="unit-height-combination" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="unit-height-combination">Unit height combination</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Please choose the tall and wall unit option you would like.</h6>
+        <span class="ms-4 mb-3">This will affect the distance between the units and your 2400mm high ceiling.</span>
+        <hr class="border border-primary border-3 opacity-25">        
+        <div class="ps-2 mt-3">
+<div class="pt-3 px-3 pb-2 m-3 d-flex justify-content-between text-decoration-none text-reset gap-3">
+  <div class="card" style="width: 18rem;">
+    <img src="img/planning-height_std-set.jpg" class="card-img-top" alt="standard-set">
+    <div class="card-body">
+      <h5 class="card-title">Standard set</h5>
+      <p class="card-text">This will allow 280mm between your units and ceiling.</p>
+      <a href="#" class="btn btn-primary">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/planning-height_tall-set.jpg" class="card-img-top" alt="tall-set">
+    <div class="card-body">
+      <h5 class="card-title">Tall set</h5>
+      <p class="card-text">This will allow 280mm between your units and ceiling.</p>
+      <a href="#" class="btn btn-primary">Choose</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="img/planning-height_mixed.jpg" class="card-img-top" alt="mixed-set">
+    <div class="card-body">
+      <h5 class="card-title">Mixed set</h5>
+      <p class="card-text">This will allow 280mm between your units and ceiling.</p>
+      <a href="#" class="btn btn-primary">Choose</a>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
   <!--footer-->
-  <div class="container-fluid fixed-bottom">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-1 border-top">
-      <p class="col-md-4 mb-0 text-body-secondary">© 2023 Kitchens<b>Expert</b></p>
+  <div class="container-fluid fixed-bottom bg-white border-top">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-1">
+      <p class="col-md-4 mb-0 text-body-secondary">© 2024 Kitchens<b>Expert</b></p>
 
       <a href="/"
         class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -366,5 +405,4 @@
     integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous">
   </script>
 </body>
-
 </html>
